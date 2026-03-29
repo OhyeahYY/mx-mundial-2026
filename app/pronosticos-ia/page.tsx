@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TelegramCTA from "@/components/TelegramCTA";
+import TelegramBoost from "@/components/TelegramBoost";
 
 export const metadata: Metadata = {
   title: "Pronosticos IA Mundial 2026 | Odds y Picks Diario",
@@ -76,6 +77,10 @@ export default function PronosticosIAHubPage() {
           </Link>
         ))}
       </section>
+
+      <div className="mt-10">
+        <TelegramBoost />
+      </div>
 
       <section className="mt-12 rounded-2xl border border-gray-200 bg-white p-6 md:p-8">
         <h2 className="text-2xl font-bold text-gray-900">Como leer nuestros picks</h2>

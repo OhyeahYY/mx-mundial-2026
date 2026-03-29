@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllPredictions } from "@/lib/content";
 import TelegramCTA from "@/components/TelegramCTA";
+import TelegramBoost from "@/components/TelegramBoost";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -60,6 +61,34 @@ export default async function HomePage() {
 
       {/* Telegram CTA */}
       <TelegramCTA />
+
+      {/* IA Odds Entry */}
+      <section className="mt-8 rounded-2xl border border-emerald-200 bg-white p-6">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <p className="text-xs uppercase tracking-wider text-emerald-700 font-semibold">
+              Nuevo en DSProi
+            </p>
+            <h2 className="text-2xl font-bold text-gray-900 mt-1">
+              Pronosticos IA con enfoque en ROI
+            </h2>
+            <p className="text-gray-600 mt-2 max-w-2xl">
+              Mira picks diarios, lectura de cuotas y niveles de riesgo para
+              tomar decisiones mas consistentes.
+            </p>
+          </div>
+          <Link
+            href="/pronosticos-ia"
+            className="inline-flex w-fit rounded-xl bg-emerald-700 text-white px-5 py-2.5 font-semibold hover:bg-emerald-800 transition-colors"
+          >
+            Entrar a IA Odds
+          </Link>
+        </div>
+      </section>
+
+      <div className="mt-8">
+        <TelegramBoost />
+      </div>
 
       {/* Predictions Grid */}
       <section className="mt-12">
