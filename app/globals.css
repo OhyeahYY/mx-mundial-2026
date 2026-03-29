@@ -2,27 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== PROSE (markdown content) ===== */
+/* ===== PROSE (markdown content) — dark theme ===== */
 .prose h2 {
   font-size: 1.5rem;
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
-  color: #111827;
+  color: #e5e7eb;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 2px solid #1e293b;
 }
 .prose h3 {
   font-size: 1.15rem;
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #1f2937;
+  color: #d1d5db;
 }
 .prose p {
   margin-bottom: 1rem;
   line-height: 1.8;
-  color: #374151;
+  color: #9ca3af;
 }
 .prose ul {
   list-style-type: disc;
@@ -32,7 +32,7 @@
 .prose ul li {
   margin-bottom: 0.4rem;
   line-height: 1.75;
-  color: #374151;
+  color: #9ca3af;
 }
 .prose ol {
   list-style-type: decimal;
@@ -42,13 +42,14 @@
 .prose ol li {
   margin-bottom: 0.4rem;
   line-height: 1.75;
+  color: #9ca3af;
 }
 .prose strong {
   font-weight: 700;
-  color: #111827;
+  color: #f3f4f6;
 }
 .prose a {
-  color: #006847;
+  color: #10b981;
   text-decoration: underline;
 }
 .prose table {
@@ -58,7 +59,7 @@
   font-size: 0.9rem;
 }
 .prose th {
-  background: #006847;
+  background: #10b981;
   color: white;
   padding: 0.65rem 1rem;
   text-align: left;
@@ -66,27 +67,28 @@
 }
 .prose td {
   padding: 0.65rem 1rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #1e293b;
+  color: #d1d5db;
 }
 .prose tr:nth-child(even) td {
-  background: #f9fafb;
+  background: rgba(16,185,129,0.04);
 }
 .prose hr {
   border: none;
-  border-top: 2px solid #e5e7eb;
+  border-top: 2px solid #1e293b;
   margin: 2rem 0;
 }
 .prose blockquote {
-  border-left: 4px solid #006847;
+  border-left: 4px solid #10b981;
   padding-left: 1rem;
   font-style: italic;
-  color: #4b5563;
+  color: #6b7280;
   margin: 1.5rem 0;
 }
 
-/* ===== FAQ accordion ===== */
+/* ===== FAQ accordion — dark theme ===== */
 details {
-  border: 1px solid #e5e7eb;
+  border: 1px solid #1e293b;
   border-radius: 0.75rem;
   overflow: hidden;
 }
@@ -94,7 +96,8 @@ details summary {
   cursor: pointer;
   font-weight: 600;
   padding: 1rem 1.25rem;
-  background: #f9fafb;
+  background: #0b1120;
+  color: #e5e7eb;
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -105,7 +108,7 @@ details summary::-webkit-details-marker {
 }
 details summary::after {
   content: "+";
-  color: #006847;
+  color: #10b981;
   font-size: 1.25rem;
   font-weight: 400;
 }
@@ -114,7 +117,8 @@ details[open] summary::after {
 }
 details p {
   padding: 1rem 1.25rem;
-  color: #374151;
+  color: #9ca3af;
   line-height: 1.75;
   margin: 0;
+  background: #060a13;
 }

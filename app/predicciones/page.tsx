@@ -13,30 +13,30 @@ export default async function PrediccionesPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-extrabold mb-2">
+      <h1 className="text-3xl font-extrabold text-white mb-2">
         Predicciones por Selección
       </h1>
-      <p className="text-gray-600 mb-8">
+      <p className="text-gray-500 mb-8">
         Análisis completo de {predictions.length} selecciones para el Mundial
         2026.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
         {predictions.map((p) => (
           <Link key={p.slug} href={`/predicciones/${p.slug}`}>
-            <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:border-green-400 transition-all cursor-pointer group h-full flex flex-col">
-              <div className="text-4xl mb-3">{p.flag}</div>
-              <h2 className="font-bold text-lg group-hover:text-green-700 transition-colors">
+            <div className="bg-dark-800 border border-white/5 rounded-xl p-4 hover:shadow-glow hover:border-accent-emerald/30 transition-all cursor-pointer group h-full flex flex-col">
+              <div className="text-3xl mb-2">{p.flag}</div>
+              <h2 className="font-bold text-sm text-white group-hover:text-accent-emerald transition-colors">
                 {p.team}
               </h2>
-              <div className="inline-block text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full mt-1 mb-2 w-fit">
+              <span className="inline-block text-[10px] bg-emerald-900/30 text-emerald-400 px-1.5 py-0.5 rounded-full mt-1 w-fit">
                 Grupo {p.group}
-              </div>
-              <p className="text-sm text-gray-500 line-clamp-2 flex-grow">
+              </span>
+              <p className="text-xs text-gray-600 line-clamp-2 mt-2 flex-grow">
                 {p.description}
               </p>
-              <div className="mt-4 text-sm font-medium text-green-700 group-hover:underline">
-                Ver predicción →
-              </div>
+              <p className="mt-3 text-xs font-medium text-accent-emerald group-hover:underline">
+                Ver →
+              </p>
             </div>
           </Link>
         ))}

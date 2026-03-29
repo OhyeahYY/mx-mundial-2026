@@ -66,30 +66,30 @@ export default async function PredictionPage({ params }: Props) {
 
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-6 flex items-center gap-1">
-        <Link href="/" className="hover:text-green-700">
+        <Link href="/" className="hover:text-accent-emerald">
           Inicio
         </Link>
         <span>›</span>
-        <Link href="/predicciones" className="hover:text-green-700">
+        <Link href="/predicciones" className="hover:text-accent-emerald">
           Predicciones
         </Link>
         <span>›</span>
-        <span className="text-gray-700">{prediction.team}</span>
+        <span className="text-gray-300">{prediction.team}</span>
       </nav>
 
       {/* Header */}
       <header className="mb-8">
         <div className="text-6xl mb-4">{prediction.flag}</div>
-        <div className="inline-block text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full mb-3">
+        <span className="inline-block text-[10px] bg-emerald-900/30 text-emerald-400 px-1.5 py-0.5 rounded-full mb-3">
           Grupo {prediction.group}
-        </div>
-        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 leading-tight">
+        </span>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-3 leading-tight">
           {prediction.title}
         </h1>
-        <p className="text-xl text-gray-600 leading-relaxed">
+        <p className="text-xl text-gray-400 leading-relaxed">
           {prediction.description}
         </p>
-        <div className="mt-3 text-sm text-gray-400">
+        <div className="mt-3 text-sm text-gray-600">
           Actualizado:{" "}
           {new Date(prediction.date).toLocaleDateString("es-MX", {
             year: "numeric",
@@ -117,7 +117,7 @@ export default async function PredictionPage({ params }: Props) {
       <div className="mt-8 text-center">
         <Link
           href="/predicciones"
-          className="text-green-700 hover:underline font-medium"
+          className="text-accent-emerald hover:underline font-medium"
         >
           ← Ver todas las predicciones
         </Link>

@@ -1,13 +1,17 @@
 import Link from "next/link";
 import { getAllPredictions } from "@/lib/content";
+import { getDailyOdds } from "@/lib/odds";
 import TelegramCTA from "@/components/TelegramCTA";
 import TelegramBoost from "@/components/TelegramBoost";
+import AIModelArena from "@/components/AIModelArena";
+import MatchCard from "@/components/MatchCard";
+import Countdown from "@/components/Countdown";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Predicciones Copa del Mundo 2026 | Pronósticos y Análisis",
+  title: "Predicciones Copa del Mundo 2026 | Pronósticos IA y Odds",
   description:
-    "Predicciones completas de todos los equipos del Mundial 2026. México juega en casa — descubre quién tiene más probabilidades de ganar.",
+    "Predicciones IA de todos los equipos del Mundial 2026. Picks diarios, modelos AI en competencia y odds en tiempo real para Mexico y LATAM.",
 };
 
 const faqs = [
@@ -35,84 +39,114 @@ const faqs = [
 
 export default async function HomePage() {
   const predictions = await getAllPredictions();
+  const picks = await getDailyOdds();
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Hero */}
-      <section className="text-center py-12 mb-8">
-        <div className="text-6xl mb-4">⚽</div>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
-          Copa del Mundo 2026
-          <br />
-          <span className="text-green-700">Predicciones y Pronósticos</span>
-        </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Análisis completo de todos los equipos. México juega en casa — descubre
-          quién tiene más probabilidades de llegar a la final.
-        </p>
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-3 text-sm text-gray-500">
-          <span>🇲🇽 México anfitrión</span>
-          <span>·</span>
-          <span>📅 11 Jun – 19 Jul 2026</span>
-          <span>·</span>
-          <span>🏟️ 48 selecciones</span>
+      <section className="relative rounded-3xl bg-hero-gradient border border-white/5 overflow-hidden px-6 md:px-10 py-12 md:py-16 mb-10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_0%,rgba(16,185,129,0.12),transparent_70%)] pointer-events-none" />
+        <div className="relative z-10">
+          <p className="text-xs uppercase tracking-[0.25em] text-accent-emerald font-semibold">
+            Reliable Picks · Transparent Data · Traceable
+          </p>
+          <h1 className="mt-4 text-4xl md:text-6xl font-extrabold text-white leading-[1.1]">
+            FIFA World Cup 2026
+            <br />
+            <span className="bg-gradient-to-r from-accent-emerald to-accent-lime bg-clip-text text-transparent">
+              Predicciones y Pronósticos
+            </span>
+          </h1>
+          <p className="mt-4 text-gray-400 max-w-2xl leading-relaxed text-lg">
+            Análisis IA de 48 selecciones. Picks diarios, modelos en competencia
+            y odds en tiempo real para aficionados de México y LATAM.
+          </p>
+          <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-gray-500">
+            <span>🇲🇽 México anfitrión</span>
+            <span className="text-white/10">·</span>
+            <span>📅 11 Jun – 19 Jul 2026</span>
+            <span className="text-white/10">·</span>
+            <span>🏟️ 48 selecciones</span>
+          </div>
+          <Countdown />
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/predicciones"
+              className="inline-flex items-center rounded-xl bg-accent-emerald text-dark-900 px-6 py-3 font-semibold hover:bg-accent-lime transition-colors"
+            >
+              Ver Predicciones
+            </Link>
+            <Link
+              href="/pronosticos-ia"
+              className="inline-flex items-center rounded-xl border border-white/20 text-white px-6 py-3 font-semibold hover:bg-white/5 transition-colors"
+            >
+              IA Odds →
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Telegram CTA */}
       <TelegramCTA />
 
-      {/* IA Odds Entry */}
-      <section className="mt-8 rounded-2xl border border-emerald-200 bg-white p-6">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      {/* AI Model Arena */}
+      <AIModelArena />
+
+      {/* Today Picks */}
+      <section className="mt-14">
+        <div className="flex items-center justify-between mb-6">
           <div>
-            <p className="text-xs uppercase tracking-wider text-emerald-700 font-semibold">
-              Nuevo en DSProi
+            <p className="text-xs uppercase tracking-widest text-accent-emerald font-semibold">
+              Picks de Hoy
             </p>
-            <h2 className="text-2xl font-bold text-gray-900 mt-1">
-              Pronosticos IA con enfoque en ROI
+            <h2 className="text-2xl font-extrabold text-white mt-1">
+              Predicciones del Día
             </h2>
-            <p className="text-gray-600 mt-2 max-w-2xl">
-              Mira picks diarios, lectura de cuotas y niveles de riesgo para
-              tomar decisiones mas consistentes.
-            </p>
           </div>
           <Link
-            href="/pronosticos-ia"
-            className="inline-flex w-fit rounded-xl bg-emerald-700 text-white px-5 py-2.5 font-semibold hover:bg-emerald-800 transition-colors"
+            href="/pronosticos-ia/hoy"
+            className="text-sm text-accent-emerald hover:underline font-semibold"
           >
-            Entrar a IA Odds
+            Ver todos →
           </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {picks.slice(0, 3).map((pick) => (
+            <MatchCard key={pick.id} pick={pick} />
+          ))}
         </div>
       </section>
 
-      <div className="mt-8">
+      {/* Telegram Boost */}
+      <div className="mt-10">
         <TelegramBoost />
       </div>
 
       {/* Predictions Grid */}
-      <section className="mt-12">
-        <h2 className="text-2xl font-bold mb-2">Predicciones por Selección</h2>
-        <p className="text-gray-600 mb-6">
+      <section className="mt-14">
+        <h2 className="text-2xl font-extrabold text-white mb-2">
+          Predicciones por Selección
+        </h2>
+        <p className="text-gray-500 mb-6">
           Análisis táctico, jugadores clave y probabilidades de cada equipo.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {predictions.map((p) => (
             <Link key={p.slug} href={`/predicciones/${p.slug}`}>
-              <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:border-green-400 transition-all cursor-pointer group h-full flex flex-col">
-                <div className="text-4xl mb-3">{p.flag}</div>
-                <h3 className="font-bold text-lg group-hover:text-green-700 transition-colors">
+              <div className="bg-dark-800 border border-white/5 rounded-xl p-4 hover:shadow-glow hover:border-accent-emerald/30 transition-all cursor-pointer group h-full flex flex-col">
+                <div className="text-3xl mb-2">{p.flag}</div>
+                <h3 className="font-bold text-sm text-white group-hover:text-accent-emerald transition-colors">
                   {p.team}
                 </h3>
-                <div className="inline-block text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full mt-1 mb-2 w-fit">
+                <span className="inline-block text-[10px] bg-emerald-900/30 text-emerald-400 px-1.5 py-0.5 rounded-full mt-1 w-fit">
                   Grupo {p.group}
-                </div>
-                <p className="text-sm text-gray-500 line-clamp-2 flex-grow">
+                </span>
+                <p className="text-xs text-gray-600 line-clamp-2 mt-2 flex-grow">
                   {p.description}
                 </p>
-                <div className="mt-4 text-sm font-medium text-green-700 group-hover:underline">
-                  Ver predicción →
-                </div>
+                <p className="mt-3 text-xs font-medium text-accent-emerald group-hover:underline">
+                  Ver →
+                </p>
               </div>
             </Link>
           ))}
@@ -121,10 +155,10 @@ export default async function HomePage() {
 
       {/* FAQ Section */}
       <section className="mt-16">
-        <h2 className="text-2xl font-bold mb-2">
+        <h2 className="text-2xl font-extrabold text-white mb-2">
           Preguntas Frecuentes — Mundial 2026
         </h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-500 mb-6">
           Todo lo que necesitas saber sobre el torneo.
         </p>
         <div className="space-y-3">
