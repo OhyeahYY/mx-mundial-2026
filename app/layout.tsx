@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     "mexico mundial 2026",
     "quien ganara el mundial 2026",
   ],
+  verification: {
+    google: "XdH--j2CsMAsWEc5zTFXGgh_697S4F6AirDMq0nc6kc",
+  },
   openGraph: {
     type: "website",
     locale: "es_MX",
