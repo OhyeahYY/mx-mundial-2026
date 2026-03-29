@@ -20,6 +20,12 @@ export default function Navigation() {
           >
             Predicciones
           </Link>
+          <Link
+            href="/pronosticos-ia"
+            className="hidden sm:block hover:text-green-200 transition-colors"
+          >
+            IA Odds
+          </Link>
           <a
             href={TELEGRAM_CHANNEL}
             target="_blank"

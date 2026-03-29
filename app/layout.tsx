@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://tu-dominio.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://dsproi.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

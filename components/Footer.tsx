@@ -26,6 +26,12 @@ export default function Footer() {
               Predicciones
             </Link>
             <Link
+              href="/pronosticos-ia"
+              className="hover:text-white transition-colors"
+            >
+              IA Odds
+            </Link>
+            <Link
               href="/privacidad"
               className="hover:text-white transition-colors"
             >
